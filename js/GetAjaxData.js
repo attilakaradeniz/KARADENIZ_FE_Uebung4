@@ -6,7 +6,9 @@ class GetDatas{
         //let that = this;
         $.ajax({
             //url: "https://httpbin.org/get",
-            url: "http://localhost/KARADENIZ_BE_Uebung3/index.php?action=listTypes",
+            //url: "http://localhost/KARADENIZ_BE_Uebung3/index.php?action=listTypes", // working
+            url: "http://localhost/KARADENIZ_FE_Uebung4/index.php?action=listTypes", // working too
+            
 
             methot: "GET",
             success: function (response) {
