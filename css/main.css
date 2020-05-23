@@ -2,14 +2,12 @@ table{
     width: 800px;
     display: block;
     width: auto;
-    
     padding-left: 8px;
-    
-    
 }
 
 td{
     width: 500px;
+    height: 40px;
 }
 
 tr:nth-child(even){
