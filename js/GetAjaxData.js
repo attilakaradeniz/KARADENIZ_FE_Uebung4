@@ -3,6 +3,7 @@ class GetDatas {
         this.data;
         this.productsData;
         this.table = $("table tbody");
+        this.button = $("button");
     }
 
     showProducts() {
@@ -10,6 +11,7 @@ class GetDatas {
         let buttonProductTypes = $("#btnProductTypes");
         buttonProductTypes.on("click", function () {
             that.ajaxProductTypes();
+            buttonProductTypes.text('click a category to see the products')
         });
     }
 
@@ -66,6 +68,7 @@ class GetDatas {
         let that = this;
         let productsData = that.productsData;
         let markup = "";
+        that.button.text('Back to Product Types');
         //console.log('TEST', JSON.stringify(productsData.productType)); // TEST
         let clear = $("#clear");
         let emptyValue = JSON.stringify(productsData.productType);
