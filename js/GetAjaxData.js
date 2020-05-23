@@ -2,6 +2,7 @@ class GetDatas {
     constructor() {
         this.data;
         this.productsData;
+        this.table = $("table tbody");
     }
 
     showProducts() {
@@ -46,6 +47,7 @@ class GetDatas {
                 console.log('5: ', response);
 
                 //console.log(response);
+                that.resetTable();
                 that.makeTableForProductTypes();
 
             },
@@ -72,7 +74,7 @@ class GetDatas {
                 // console.log('from ajaxProducts: ', response.productType);
                 // console.log('from ajaxProducts: ', response.products);
                 
-
+                
                 that.makeTableForProducts();
 
 
@@ -102,9 +104,11 @@ class GetDatas {
 
     makeTableForProductTypes() {
         let that = this;
-        let table = $("table tbody");
+        //let table = $("table tbody");
         let data = that.data;
         let markup = "";
+
+        that.resetTable();
         //let forID = "$(#" + data[e].productType + ")";
         //let a = $("#" + data[e].productType + ");
 
@@ -112,17 +116,18 @@ class GetDatas {
             //            markup = "<tr><td><a  id=" + data[e].productType + "\" href=\"" + data[e].url + "\">" + data[e].productType + "</a></td></tr>";
             //markup = $("<tr><td id=" + data[e].productType + ">" + data[e].productType + "</td></tr>").on("click", function() {that.justAlert();});
             markup = $("<tr><td id=" + data[e].productType + ">" + data[e].productType + "</td></tr>").on("click", function () { that.ajaxProducts(data[e].url); });
-            table.append(markup);
+            that.table.append(markup);
         }
     }
 
 
     makeTableForProducts() {
         let that = this;
-        let table = $("table tbody");
+        //let table = $("table tbody");
         let productsData = that.productsData;
         let markup = "";
         //console.log('teybıldan', JSON.stringify(productsData));
+        that.resetTable();
         for (let e in productsData) {
             markup = "<tr><td>" + productsData[e].productType + "</td></tr>";
 
@@ -133,15 +138,20 @@ class GetDatas {
             productsData.products.forEach((element) => {
                 console.log(element.name);
                 markup = "<tr><td>" + element.name + "</td></tr>";
-                table.append(markup);
+                that.table.append(markup);
                 
             });
            
             }
-            table.append(markup);
+            that.table.append(markup);
         }
 
 
+    }
+    
+
+    resetTable(){
+            this.table.empty();
     }
 
 
