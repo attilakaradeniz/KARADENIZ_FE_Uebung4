@@ -1,0 +1,17 @@
+table{
+    width: 800px;
+    display: block;
+    width: auto;
+    
+    padding-left: 8px;
+    
+    
+}
+
+td{
+    width: 500px;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}

@@ -8,7 +8,7 @@ class GetDatas {
     showProducts() {
         let that = this;
         let buttonProductTypes = $("#btnProductTypes");
-        let buttonProducts = $("#btnProducts");
+        //let buttonProducts = $("#btnProducts");
 
         buttonProductTypes.on("click", function () {
             that.ajaxProductTypes();
@@ -21,7 +21,7 @@ class GetDatas {
 
     ajaxProductTypes() {
         let that = this;
-        let productFirst;
+        //let productFirst;
         $.ajax({
             //url: "https://httpbin.org/get",
             //url: "http://localhost/KARADENIZ_BE_Uebung3/index.php?action=listTypes", // working
@@ -31,7 +31,7 @@ class GetDatas {
             success: function (response) {
 
                 that.data = response;
-                productFirst = response[0].productType;
+                //productFirst = response[0].productType;
 
                 function send() {
                     return response[0].productType;
@@ -49,6 +49,7 @@ class GetDatas {
                 //console.log(response);
                 that.resetTable();
                 that.makeTableForProductTypes();
+                
 
             },
             error: function (error) {
@@ -87,20 +88,6 @@ class GetDatas {
 
     }
 
-    showDatas() {
-        // FOR TEST
-        let that = this;
-        let divKey = $('#divKey');
-        let divValue = $('#divValue');
-        let productType = this.ajaxProductTypes.productFirst;
-
-        divKey.html("blabla");
-        // divValue.html('.html:', that.data.productType);
-        // console.log('showData(log): ',that.data);
-        // console.log('response', that.ajaxRequest.response);
-        // divValue.html(divKey.html());
-        divValue.html(JSON.stringify(productType));
-    }
 
     makeTableForProductTypes() {
         let that = this;
@@ -115,6 +102,7 @@ class GetDatas {
         for (let e in data) {
             //            markup = "<tr><td><a  id=" + data[e].productType + "\" href=\"" + data[e].url + "\">" + data[e].productType + "</a></td></tr>";
             //markup = $("<tr><td id=" + data[e].productType + ">" + data[e].productType + "</td></tr>").on("click", function() {that.justAlert();});
+            
             markup = $("<tr><td id=" + data[e].productType + ">" + data[e].productType + "</td></tr>").on("click", function () { that.ajaxProducts(data[e].url); });
             that.table.append(markup);
         }
@@ -129,16 +117,32 @@ class GetDatas {
         //console.log('teybıldan', JSON.stringify(productsData));
         that.resetTable();
         for (let e in productsData) {
-            markup = "<tr><td>" + productsData[e].productType + "</td></tr>";
+
+
+            //markup = "<tr><td>" + productsData[e].productType + "</td></tr>";
+            
+
+
+
+
+
 
             if(e == "products"){
                
             console.log('blablabla');
             console.log(e);
+
             productsData.products.forEach((element) => {
                 console.log(element.name);
-                markup = "<tr><td>" + element.name + "</td></tr>";
+
+                    if(element.name == 'undefined'){
+                        markup = "<tr><td>No prodddddddd</td></td>"; 
+                        that.table.append(markup);      
+                    } else{
+
+                markup = $("<tr><td>" + element.name + "</td></tr>").on("click", function () { $(this).fadeOut(1000); });
                 that.table.append(markup);
+            }
                 
             });
            
