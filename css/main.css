@@ -3,13 +3,18 @@ table{
     display: block;
     width: auto;
     padding-left: 8px;
+    
 }
 
 td{
     width: 500px;
-    height: 40px;
+    height: 40px.container
 }
 
 tr:nth-child(even){
     background-color: #f2f2f2;
+}
+
+.table-hover{
+    cursor: pointer;
 }
